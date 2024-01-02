@@ -1,5 +1,6 @@
 package com.ks.gr.article.service;
 
+import com.ks.gr.commons.entity.dto.ImageDto;
 import com.ks.gr.article.entity.dto.ArticleResponseDto;
 import com.ks.gr.article.entity.dto.ArticleCreateDto;
 import com.ks.gr.article.entity.dto.ArticleUpdateDto;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.*;
+
 
 @Service
 @RequiredArgsConstructor
@@ -27,21 +29,26 @@ public class ArticleService {
                         .author(entity.getAuthor())
                         .name(entity.getName())
                         .text(entity.getText())
-                        .picture(entity.getPicture())
                         .build()
         ).toList();
     }
 
-    public ArticleResponseDto getArticle(long id) {
+    public ImageDto getPicture(Long id) {
         ArticleEntity articleEntity = articleRepository.findById(id).orElseThrow(() ->
                 new EntityNotFoundException("Article with ID " + id + " not found."));
+        return ImageDto.builder().picture(articleEntity.getPicture()).build();
+    }
+
+    public ArticleResponseDto getArticle(Long id) {
+        ArticleEntity articleEntity = articleRepository.findById(id).orElseThrow(() ->
+                new EntityNotFoundException("Article with ID " + id + " not found."));
+
         return ArticleResponseDto.builder()
                 .id(articleEntity.getId())
                 .date(articleEntity.getDate())
                 .author(articleEntity.getAuthor())
                 .name(articleEntity.getName())
                 .text(articleEntity.getText())
-                .picture(articleEntity.getPicture())
                 .build();
     }
 
@@ -60,7 +67,6 @@ public class ArticleService {
                 .author(createdEntity.getAuthor())
                 .name(createdEntity.getName())
                 .text(createdEntity.getText())
-                .picture(createdEntity.getPicture())
                 .build();
     }
 
@@ -80,14 +86,13 @@ public class ArticleService {
                     .author(createdEntity.getAuthor())
                     .name(createdEntity.getName())
                     .text(createdEntity.getText())
-                    .picture(createdEntity.getPicture())
                     .build();
         } else {
             throw new EntityNotFoundException("Article with ID " + dto.id() + " not found.");
         }
     }
 
-    public void deleteArticle(long id) {
+    public void deleteArticle(Long id) {
         if (articleRepository.existsById(id)) {
             articleRepository.deleteById(id);
         } else {

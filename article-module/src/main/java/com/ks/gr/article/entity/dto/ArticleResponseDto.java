@@ -5,10 +5,9 @@ import lombok.Builder;
 import java.time.LocalDateTime;
 
 @Builder
-public record ArticleResponseDto(long id,
+public record ArticleResponseDto(Long id,
                                  LocalDateTime date,
                                  String author,
                                  String name,
-                                 String text,
-                                 String picture) {
+                                 String text) {
 }

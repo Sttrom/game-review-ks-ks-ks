@@ -1,10 +1,11 @@
 package com.ks.gr.article.controller;
 
+import com.ks.gr.commons.entity.dto.ImageDto;
 import com.ks.gr.article.entity.dto.ArticleResponseDto;
 import com.ks.gr.article.entity.dto.ArticleCreateDto;
 import com.ks.gr.article.entity.dto.ArticleUpdateDto;
 import com.ks.gr.article.service.ArticleService;
-import com.ks.gr.commons.dto.BaseResponseDto;
+import com.ks.gr.commons.entity.dto.BaseResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +25,13 @@ public class ArticleAdminController {
     }
 
     @GetMapping("/{id}")
-    public ArticleResponseDto getArticle(@PathVariable long id) {
+    public ArticleResponseDto getArticle(@PathVariable Long id) {
         return articleService.getArticle(id);
+    }
+
+    @GetMapping("/{id}/picture")
+    public ImageDto getPicture(@PathVariable Long id) {
+        return articleService.getPicture(id);
     }
 
     @PostMapping
@@ -40,7 +46,7 @@ public class ArticleAdminController {
     }
 
     @DeleteMapping("/{id}")
-    public BaseResponseDto deleteArticle(@PathVariable long id) {
+    public BaseResponseDto deleteArticle(@PathVariable Long id) {
         articleService.deleteArticle(id);
         return new BaseResponseDto("Article deleted");
     }
