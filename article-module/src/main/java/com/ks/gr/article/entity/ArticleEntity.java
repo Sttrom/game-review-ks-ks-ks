@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Blob;
 import java.time.LocalDateTime;
 @Data
 @Entity
@@ -17,12 +18,13 @@ import java.time.LocalDateTime;
 public class ArticleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private LocalDateTime date;
     private String author; //User-class
     private String name;
     private String text;
-    private String picture;
+    @Lob
+    private byte[] picture;
 
 
 }

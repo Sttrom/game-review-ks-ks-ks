@@ -1,6 +1,6 @@
 package com.ks.gr.commons.exception.handler;
 
-import com.ks.gr.commons.dto.BaseErrorResponse;
+import com.ks.gr.commons.entity.dto.BaseErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
