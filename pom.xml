@@ -15,7 +15,7 @@
     <name>ksgr</name>
     <description>Super mega cool game review website</description>
     <modules>
-        <module>article-module</module>
+        <module>articles</module>
         <module>commons</module>
     </modules>
     <properties>
