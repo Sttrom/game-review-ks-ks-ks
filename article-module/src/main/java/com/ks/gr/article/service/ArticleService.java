@@ -17,8 +17,6 @@ import java.util.*;
 public class ArticleService {
     private final ArticleRepository articleRepository;
 
-    private final TreeMap<Long, ArticleCreateDto> archive = new TreeMap<>();
-
     public List<ArticleResponseDto> getAll() {
         return articleRepository.findAll().stream().map(entity ->
                 ArticleResponseDto.builder()
@@ -34,7 +32,7 @@ public class ArticleService {
 
     public ArticleResponseDto getArticle(long id) {
         ArticleEntity articleEntity = articleRepository.findById(id).orElseThrow(() ->
-                new EntityNotFoundException("Article with ID " + id + " not found."));
+                new EntityNotFoundException("Article with id " + id + " not found."));
         return ArticleResponseDto.builder()
                 .id(articleEntity.getId())
                 .date(articleEntity.getDate())
@@ -83,7 +81,7 @@ public class ArticleService {
                     .picture(createdEntity.getPicture())
                     .build();
         } else {
-            throw new EntityNotFoundException("Article with ID " + dto.id() + " not found.");
+            throw new EntityNotFoundException("Article with id " + dto.id() + " not found.");
         }
     }
 
@@ -91,7 +89,7 @@ public class ArticleService {
         if (articleRepository.existsById(id)) {
             articleRepository.deleteById(id);
         } else {
-            throw new EntityNotFoundException("Article with ID " + id + " not found.");
+            throw new EntityNotFoundException("Article with id " + id + " not found.");
         }
     }
 
