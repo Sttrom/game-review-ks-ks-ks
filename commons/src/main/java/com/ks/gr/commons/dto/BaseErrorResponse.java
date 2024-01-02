@@ -1,4 +1,4 @@
-package com.ks.gr.commons.exception.dto;
+package com.ks.gr.commons.dto;
 
 public record BaseErrorResponse(String data) {
 }
