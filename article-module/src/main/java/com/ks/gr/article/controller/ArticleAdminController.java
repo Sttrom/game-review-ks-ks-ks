@@ -29,7 +29,7 @@ public class ArticleAdminController {
         return articleService.getArticle(id);
     }
 
-    @GetMapping("/picture/{id}")
+    @GetMapping("/{id}/picture")
     public ImageDto getPicture(@PathVariable Long id) {
         return articleService.getPicture(id);
     }
