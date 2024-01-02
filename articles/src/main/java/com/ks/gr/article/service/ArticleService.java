@@ -13,13 +13,10 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.*;
 
-
 @Service
 @RequiredArgsConstructor
 public class ArticleService {
     private final ArticleRepository articleRepository;
-
-    private final TreeMap<Long, ArticleCreateDto> archive = new TreeMap<>();
 
     public List<ArticleResponseDto> getAll() {
         return articleRepository.findAll().stream().map(entity ->
@@ -41,8 +38,7 @@ public class ArticleService {
 
     public ArticleResponseDto getArticle(Long id) {
         ArticleEntity articleEntity = articleRepository.findById(id).orElseThrow(() ->
-                new EntityNotFoundException("Article with ID " + id + " not found."));
-
+                new EntityNotFoundException("Article with id " + id + " not found."));
         return ArticleResponseDto.builder()
                 .id(articleEntity.getId())
                 .date(articleEntity.getDate())
@@ -88,7 +84,7 @@ public class ArticleService {
                     .text(createdEntity.getText())
                     .build();
         } else {
-            throw new EntityNotFoundException("Article with ID " + dto.id() + " not found.");
+            throw new EntityNotFoundException("Article with id " + dto.id() + " not found.");
         }
     }
 
@@ -96,7 +92,7 @@ public class ArticleService {
         if (articleRepository.existsById(id)) {
             articleRepository.deleteById(id);
         } else {
-            throw new EntityNotFoundException("Article with ID " + id + " not found.");
+            throw new EntityNotFoundException("Article with id " + id + " not found.");
         }
     }
 
