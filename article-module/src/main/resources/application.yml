@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ksgr?currentSchema="articles"
+    username: username
+    password: password
+    hikari:
+      connection-init-sql: CREATE SCHEMA IF NOT EXISTS articles
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
