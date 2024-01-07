@@ -2,29 +2,21 @@ server:
   port: 8080
 
 spring:
+  config:
+    import: secrets.properties
   datasource:
-    url: jdbc:postgresql://localhost:5432/ksgr?currentSchema="users"
-    username: username
-    password: password
+    url: ${KSGR_USERS_DB_URL:jdbc:postgresql://localhost:5432/ksgr}?currentSchema="users"
+    username: ${KSGR_DB_USERNAME}
+    password: ${KSGR_DB_PASSWORD}
     hikari:
       connection-init-sql: CREATE SCHEMA IF NOT EXISTS users
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
-  data:
-    redis:
-      host: localhost
-      port: 6379
 
 logging:
   level:
     org:
       springframework:
         security: INFO
-
-application:
-  jwt:
-    secret-key: secret
-    access-token-duration: 60m
-    refresh-token-duration: 180m
