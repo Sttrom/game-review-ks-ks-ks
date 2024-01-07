@@ -2,10 +2,12 @@ server:
   port: 8081
 
 spring:
+  config:
+    import: secrets.properties
   datasource:
-    url: jdbc:postgresql://localhost:5432/ksgr?currentSchema="articles"
-    username: username
-    password: password
+    url: ${KSGR_ARTICLES_DB_URL:jdbc:postgresql://localhost:5432/ksgr}?currentSchema="articles"
+    username: ${KSGR_DB_USERNAME}
+    password: ${KSGR_DB_PASSWORD}
     hikari:
       connection-init-sql: CREATE SCHEMA IF NOT EXISTS articles
   jpa:

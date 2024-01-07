@@ -6,7 +6,6 @@ import com.ks.gr.user.entity.dto.UserUpdateDto;
 import com.ks.gr.user.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +15,6 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
     public List<UserResponseDto> getAllUsers() {
         return userRepository.findAll().stream().map(user -> UserResponseDto.builder()
@@ -80,7 +78,7 @@ public class UserService {
                 .id(userUpdateDto.id())
                 .username(userUpdateDto.username())
                 .email(userUpdateDto.email())
-                .password(passwordEncoder.encode(userUpdateDto.password()))
+//                .password(passwordEncoder.encode(userUpdateDto.password()))
                 .steamLink(userUpdateDto.steamLink())
                 .about(userUpdateDto.about())
                 .avatar(userUpdateDto.avatar())

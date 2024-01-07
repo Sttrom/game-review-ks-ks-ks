@@ -1,6 +1,6 @@
 package com.ks.gr.user.controller;
 
-import com.ks.gr.user.entity.dto.BaseResponseDto;
+import com.ks.gr.commons.entity.dto.BaseResponseDto;
 import com.ks.gr.user.entity.dto.UserResponseDto;
 import com.ks.gr.user.entity.dto.UserUpdateDto;
 import com.ks.gr.user.service.UserService;
