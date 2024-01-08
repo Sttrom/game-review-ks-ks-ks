@@ -1,6 +1,5 @@
 package com.ks.gr.article.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,20 +8,21 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+
 @Data
 @Entity
-@Table(name = "articles")
+@Table(name = "comments")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ArticleEntity {
+
+public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime date;
     private String author; //User-class
-    private String name;
     private String text;
-    @Lob
-    private byte[] picture;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private ArticleEntity article;
 }
