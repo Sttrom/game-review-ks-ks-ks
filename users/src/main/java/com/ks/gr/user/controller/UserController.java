@@ -4,6 +4,7 @@ import com.ks.gr.commons.entity.dto.BaseResponseDto;
 import com.ks.gr.user.entity.dto.UserResponseDto;
 import com.ks.gr.user.entity.dto.UserUpdateDto;
 import com.ks.gr.user.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +40,7 @@ public class UserController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserResponseDto updateUser(@PathVariable long id, @RequestBody UserUpdateDto userUpdateDto) {
+    public UserResponseDto updateUser(@PathVariable long id, @Valid @RequestBody UserUpdateDto userUpdateDto) {
         return userService.updateUser(id, userUpdateDto);
     }
 

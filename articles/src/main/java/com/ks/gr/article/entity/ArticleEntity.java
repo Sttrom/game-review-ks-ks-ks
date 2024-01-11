@@ -20,7 +20,7 @@ public class ArticleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime date;
-    private String author; //User-class
+    private String author; //TODO connect with UserEntity
     private String name;
     private String text;
     @Lob

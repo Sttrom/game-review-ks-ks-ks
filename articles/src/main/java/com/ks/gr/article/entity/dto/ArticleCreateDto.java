@@ -1,5 +1,9 @@
 package com.ks.gr.article.entity.dto;
 
-public record ArticleCreateDto(String name, String text, byte[] picture) {
+import jakarta.validation.constraints.NotNull;
+
+public record ArticleCreateDto(@NotNull(message = "name must be present") String name,
+                               @NotNull(message = "text must be present")String text,
+                               byte[] picture) {
 
 }

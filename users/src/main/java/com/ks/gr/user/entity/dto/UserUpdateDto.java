@@ -4,9 +4,10 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public record UserUpdateDto(@NotNull long id,
-                            @Size(min = 3, max = 20) String username,
-                            @Email String email,
+public record UserUpdateDto(@NotNull(message = "id must be present") long id,
+                            @Size(min = 3, max = 20, message = "min username length 3, max 20") String username,
+
+                            @Email(message = "email is invalid") String email,
                             String password,
                             String steamLink,
                             String about,

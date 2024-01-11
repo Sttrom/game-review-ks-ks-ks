@@ -1,10 +1,10 @@
 package com.ks.gr.user.service;
 
+import com.ks.gr.commons.exception.EntityNotFoundException;
 import com.ks.gr.user.entity.UserEntity;
 import com.ks.gr.user.entity.dto.UserResponseDto;
 import com.ks.gr.user.entity.dto.UserUpdateDto;
 import com.ks.gr.user.repository.UserRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

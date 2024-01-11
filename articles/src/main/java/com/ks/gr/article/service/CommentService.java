@@ -6,7 +6,7 @@ import com.ks.gr.article.entity.dto.*;
 import com.ks.gr.article.entity.enumeration.SortOrder;
 import com.ks.gr.article.repository.ArticleRepository;
 import com.ks.gr.article.repository.CommentRepository;
-import jakarta.persistence.EntityNotFoundException;
+import com.ks.gr.commons.exception.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
