@@ -3,11 +3,11 @@ package com.ks.gr.article.controller;
 import com.ks.gr.article.entity.dto.CommentCreateDto;
 import com.ks.gr.article.entity.dto.CommentResponseDto;
 import com.ks.gr.article.entity.dto.CommentUpdateDto;
+import com.ks.gr.article.entity.enumeration.SortOrder;
 import com.ks.gr.article.service.CommentService;
 import com.ks.gr.commons.entity.dto.BaseResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +20,9 @@ public class CommentController {
     @GetMapping
     public Page<CommentResponseDto> getAllCommentsInAnArticle(
             @RequestParam(required = false, defaultValue = "0") int page,
-            @RequestParam(required = false, defaultValue = "20") int size) {
-        return commentService.getAllCommentsInAnArticle(PageRequest.of(page, size));
+            @RequestParam(required = false, defaultValue = "20") int size,
+            @RequestParam(required = false, defaultValue = "DESC") SortOrder sortOrder) {
+        return commentService.getAllCommentsInAnArticle(page, size, sortOrder);
     }
 
     @GetMapping("/{id}")

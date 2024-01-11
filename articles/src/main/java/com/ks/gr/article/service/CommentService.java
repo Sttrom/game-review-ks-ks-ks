@@ -3,12 +3,14 @@ package com.ks.gr.article.service;
 import com.ks.gr.article.entity.ArticleEntity;
 import com.ks.gr.article.entity.CommentEntity;
 import com.ks.gr.article.entity.dto.*;
+import com.ks.gr.article.entity.enumeration.SortOrder;
 import com.ks.gr.article.repository.ArticleRepository;
 import com.ks.gr.article.repository.CommentRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,7 +21,10 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final ArticleRepository articleRepository;
 
-    public Page<CommentResponseDto> getAllCommentsInAnArticle(PageRequest pageRequest) {
+    public Page<CommentResponseDto> getAllCommentsInAnArticle(int page, int size, SortOrder sortOrder) {
+        Sort sort = Sort.by("date");
+        PageRequest pageRequest = PageRequest.of(page, size,
+                sortOrder.equals(SortOrder.DESC) ? sort.descending() : sort.ascending());
         return commentRepository.findAll(pageRequest).map(commentEntity ->
                 CommentResponseDto.builder()
                         .id(commentEntity.getId())
