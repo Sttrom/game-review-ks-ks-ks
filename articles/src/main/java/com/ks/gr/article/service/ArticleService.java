@@ -6,7 +6,7 @@ import com.ks.gr.article.entity.dto.ArticleCreateDto;
 import com.ks.gr.article.entity.dto.ArticleUpdateDto;
 import com.ks.gr.article.repository.ArticleRepository;
 import com.ks.gr.article.entity.ArticleEntity;
-import jakarta.persistence.EntityNotFoundException;
+import com.ks.gr.commons.exception.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
