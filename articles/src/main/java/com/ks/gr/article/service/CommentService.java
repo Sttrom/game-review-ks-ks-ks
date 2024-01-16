@@ -2,7 +2,9 @@ package com.ks.gr.article.service;
 
 import com.ks.gr.article.entity.ArticleEntity;
 import com.ks.gr.article.entity.CommentEntity;
-import com.ks.gr.article.entity.dto.*;
+import com.ks.gr.article.entity.dto.CommentCreateDto;
+import com.ks.gr.article.entity.dto.CommentResponseDto;
+import com.ks.gr.article.entity.dto.CommentUpdateDto;
 import com.ks.gr.article.entity.enumeration.SortOrder;
 import com.ks.gr.article.repository.ArticleRepository;
 import com.ks.gr.article.repository.CommentRepository;

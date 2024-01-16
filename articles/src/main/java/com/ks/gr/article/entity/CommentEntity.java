@@ -19,10 +19,10 @@ import java.time.LocalDateTime;
 public class CommentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private LocalDateTime date;
-    private String author; //User-class
-    private String text;
+    protected Long id;
+    protected LocalDateTime date;
+    protected String author; //TODO User-class
+    protected String text;
     @ManyToOne(cascade = CascadeType.ALL)
-    private ArticleEntity article;
+    protected ArticleEntity article;
 }

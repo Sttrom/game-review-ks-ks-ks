@@ -1,6 +1,5 @@
 package com.ks.gr.article.service;
 
-import com.ks.gr.commons.entity.dto.ImageDto;
 import com.ks.gr.article.entity.dto.ArticleResponseDto;
 import com.ks.gr.article.entity.dto.ArticleCreateDto;
 import com.ks.gr.article.entity.dto.ArticleUpdateDto;
@@ -30,10 +29,10 @@ public class ArticleService {
         ).toList();
     }
 
-    public ImageDto getPicture(Long id) {
+    public String getPicture(Long id) {
         ArticleEntity articleEntity = articleRepository.findById(id).orElseThrow(() ->
                 new EntityNotFoundException("Article with ID " + id + " not found."));
-        return ImageDto.builder().picture(articleEntity.getPicture()).build();
+        return articleEntity.getPicture();
     }
 
     public ArticleResponseDto getArticle(Long id) {

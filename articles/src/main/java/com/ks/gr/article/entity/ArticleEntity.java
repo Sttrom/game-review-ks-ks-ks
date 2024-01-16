@@ -18,11 +18,10 @@ import java.time.LocalDateTime;
 public class ArticleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private LocalDateTime date;
-    private String author; //User-class
-    private String name;
-    private String text;
-    @Lob
-    private byte[] picture;
+    protected Long id;
+    protected LocalDateTime date;
+    protected String author; //TODO User-class
+    protected String name;
+    protected String text;
+    protected String picture;
 }

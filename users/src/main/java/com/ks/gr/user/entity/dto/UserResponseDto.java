@@ -12,5 +12,5 @@ public record UserResponseDto(Long id,
                               Set<Roles> roles,
                               String steamLink,
                               String about,
-                              String avatar) { //FIXME avatar type
+                              String avatar) {
 }

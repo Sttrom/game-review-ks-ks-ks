@@ -36,5 +36,5 @@ public class UserEntity {
 
     private String about;
 
-    private String avatar; //FIXME avatar type
+    private String avatar;
 }

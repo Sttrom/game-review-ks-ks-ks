@@ -1,6 +1,5 @@
 package com.ks.gr.article.controller;
 
-import com.ks.gr.commons.entity.dto.ImageDto;
 import com.ks.gr.article.entity.dto.ArticleResponseDto;
 import com.ks.gr.article.entity.dto.ArticleCreateDto;
 import com.ks.gr.article.entity.dto.ArticleUpdateDto;
@@ -30,7 +29,7 @@ public class ArticleController {
     }
 
     @GetMapping("/{id}/picture")
-    public ImageDto getPicture(@PathVariable Long id) {
+    public String getPicture(@PathVariable Long id) {
         return articleService.getPicture(id);
     }
 

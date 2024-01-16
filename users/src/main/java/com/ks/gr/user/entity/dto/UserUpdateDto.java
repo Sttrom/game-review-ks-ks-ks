@@ -10,5 +10,5 @@ public record UserUpdateDto(@NotNull long id,
                             String password,
                             String steamLink,
                             String about,
-                            String avatar) { //FIXME avatar type
+                            String avatar) {
 }
